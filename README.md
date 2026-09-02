@@ -14,9 +14,10 @@ Tanpa environment Supabase, public site tetap berjalan memakai seed content dan 
 
 Dokumentasi lengkap:
 
-- [Setup dan deployment](docs/setup.md)
+- [Setup dan deployment Domainesia](docs/setup.md)
 - [Arsitektur dan schema](docs/cms-architecture.md)
 - [Panduan mengelola konten](docs/content-guide.md)
+- [Requirements inventory dan gap analysis](docs/requirements-gap-analysis.md)
 - [Migration Supabase](supabase/migrations/20260902054224_initial_cms_schema.sql)
 
 ## Quality checks
@@ -29,4 +30,4 @@ npm run test:e2e
 npm run build
 ```
 
-Production tidak boleh dideploy dari branch fitur. Gunakan Vercel Preview sampai schema, Auth email, Storage, role, CRUD, dan responsive QA selesai.
+Production/main tidak diubah dari branch fitur. Paket self-hosted dibuat sebagai root aplikasi terpisah untuk subdomain `aiueo.mglwebkits.com`.

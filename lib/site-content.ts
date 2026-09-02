@@ -33,10 +33,37 @@ export const pageCopy = {
   home: { title_id:'Hidup penuh momen. Buat jadi berkesan.', title_en:'Life is an event. Make it live.', description_id:'Kami mengubah momen perusahaan menjadi cerita bersama yang layak dikenang.', description_en:'We turn company moments into shared stories people actually want to remember.' },
   about: { title_id:'Bukan sekadar event organizer.', title_en:'Not just an event organizer.', description_id:'Kami mendengar, merancang ritme, mengelola kerumitan, dan menjaga alasan orang berkumpul.', description_en:'We listen, design the rhythm, manage the chaos, and protect the reason people came together.' },
   services: { title_id:'Apa yang bisa kita hidupkan?', title_en:'What can we make live?', description_id:'Pilih titik awal. Kami akan membuatnya terasa milik Anda.', description_en:'Choose a starting point. We’ll make it yours.' },
+  packages: { title_id:'Tiga titik awal, bukan harga mati.', title_en:'Three starting points, never a fixed quote.', description_id:'Indikasi awal untuk membantu Anda menyusun anggaran. Harga final selalu mengikuti jumlah peserta, tanggal, ruang lingkup, dan harga vendor yang masih berlaku.', description_en:'An early indication to help shape a budget. Final pricing always follows guest count, dates, scope, and currently valid vendor rates.' },
   events: { title_id:'Agenda yang benar-benar terjadi.', title_en:'What’s coming up.', description_id:'Hanya tanggal yang sudah dikonfirmasi yang kami tampilkan.', description_en:'Only confirmed dates go live.' },
   news: { title_id:'Catatan dari lapangan.', title_en:'Fresh from the field.', description_id:'Ide, pelajaran, dan sudut pandang tentang pengalaman perusahaan.', description_en:'Ideas, lessons, and perspectives on company experiences.' },
   gallery: { title_id:'Bukti bahwa ini terjadi.', title_en:'Proof that it happened.', description_id:'Momen nyata, energi nyata, dan orang-orang yang hadir sepenuhnya.', description_en:'Real moments, real energy, and people fully present.' },
   contact: { title_id:'Mulai dari alasan untuk berkumpul.', title_en:'Start with the reason to gather.', description_id:'Kami akan membantu membentuk langkah berikutnya.', description_en:'We’ll help shape the next step.' },
+  privacy: { title_id:'Privasi, dijelaskan apa adanya.', title_en:'Privacy, stated plainly.', description_id:'Website ini mengumpulkan seminimal mungkin dan tidak menyimpan brief konsultasi ke database website.', description_en:'This website collects as little as possible and does not store consultation briefs in its website database.' },
+  terms: { title_id:'Ketentuan penggunaan website.', title_en:'Website terms of use.', description_id:'Informasi publik di situs ini bukan penawaran final atau kontrak penyelenggaraan event.', description_en:'Public information on this site is not a final offer or an event services contract.' },
 } as const;
+
+export const packageSeeds = [
+  {
+    slug: 'pangalengan', image: '/assets/images/events/rafting.jpg',
+    name_id: 'Pangalengan', name_en: 'Pangalengan',
+    price_id: 'Indikasi mulai Rp1.525.000+ / pax', price_en: 'Indicative from IDR 1,525,000+ / guest',
+    description_id: 'Alam terbuka, aktivitas air, dan ritme kebersamaan untuk tim yang ingin benar-benar keluar dari rutinitas.',
+    description_en: 'Open landscapes, water activities, and a shared rhythm for teams ready to step outside routine.',
+  },
+  {
+    slug: 'cikereteg', image: '/assets/images/events/team-building.jpg',
+    name_id: 'Cikereteg', name_en: 'Cikereteg',
+    price_id: 'Indikasi mulai Rp1.875.000+ / pax', price_en: 'Indicative from IDR 1,875,000+ / guest',
+    description_id: 'Akses ringkas dari Jakarta untuk team building, pertemuan, dan waktu bersama yang terarah.',
+    description_en: 'A practical escape from Jakarta for team building, meetings, and purposeful time together.',
+  },
+  {
+    slug: 'garut', image: '/assets/images/events/outing-beach.jpg',
+    name_id: 'Garut', name_en: 'Garut',
+    price_id: 'Indikasi mulai Rp2.465.000+ / pax', price_en: 'Indicative from IDR 2,465,000+ / guest',
+    description_id: 'Perjalanan 2D1N dengan ruang lebih luas untuk eksplorasi, aktivitas, malam kebersamaan, dan refleksi.',
+    description_en: 'A 2D1N journey with more room for exploration, activity, a shared evening, and reflection.',
+  },
+] as const;
 
 export function copy<T extends Record<string,string>>(value: T, field: string, locale: Locale) { return value[`${field}_${locale}`]; }

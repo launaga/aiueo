@@ -8,7 +8,7 @@ import { LanguageSwitcher } from './language-switcher';
 
 export function Header({ locale, alternatePath }: { locale: Locale; alternatePath: string }) {
   const [open,setOpen] = useState(false); const t = getDictionary(locale);
-  const links = [[t.home,''],[t.about,'about'],[t.services,'services'],[t.events,'events'],[t.news,'news'],[t.gallery,'gallery']] as const;
+  const links = [[t.home,''],[t.about,'about'],[t.services,'services'],[t.packages,'packages'],[t.events,'events'],[t.news,'news'],[t.gallery,'gallery']] as const;
   return <header className="site-header">
     <Link className="brand" href={`/${locale}`} aria-label="AIUEO home"><span>A</span><span>I</span><span>U</span><span>E</span><span>O</span></Link>
     <button className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={()=>setOpen(!open)}>{t.menu}<i/><i/></button>

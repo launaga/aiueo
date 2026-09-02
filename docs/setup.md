@@ -1,10 +1,10 @@
-# Setup, environment, and preview deployment
+# Setup, environment, and Domainesia deployment
 
 ## Requirements
 
 - Node.js 20.9+
 - Supabase project
-- Vercel project `mgl-portfolio/aiueo`
+- Hosting Domainesia yang mendukung Setup Node.js App (Node.js 20.9+)
 - Git branch selain `main` selama development dan QA
 
 ## Sandbox demo tanpa Supabase
@@ -17,7 +17,7 @@ export ADMIN_DEMO_SESSION_SECRET="$(openssl rand -base64 32)"
 npm run dev
 ```
 
-Pilih **Masuk sebagai Viewer** untuk dashboard read-only atau **Masuk sebagai Super Admin** untuk melihat navigasi penuh termasuk User management. Mutasi eksternal seperti email invitation, upload, perubahan lead, dan password sengaja disabled/no-op di sandbox. Jangan menyimpan nilai `ADMIN_DEMO_SESSION_SECRET` ke repository; pasang sebagai encrypted environment variable untuk Vercel Preview bila demo preview dibutuhkan.
+Pilih **Masuk sebagai Viewer** untuk dashboard read-only atau **Masuk sebagai Super Admin** untuk melihat navigasi penuh termasuk User management dan kalkulator costing. Mutasi eksternal seperti email invitation, upload, perubahan lead, dan password sengaja disabled/no-op di sandbox. Jangan menyimpan nilai `ADMIN_DEMO_SESSION_SECRET` ke repository; pasang sebagai environment variable terenkripsi di panel Node.js App hanya untuk sandbox non-production.
 
 Untuk kembali ke Supabase asli, hapus/nonaktifkan `ADMIN_DEMO_MODE` lalu isi variable Supabase di bawah. Bila variable Supabase tersedia, sandbox otomatis tidak aktif.
 
@@ -27,7 +27,7 @@ Untuk kembali ke Supabase asli, hapus/nonaktifkan `ADMIN_DEMO_MODE` lalu isi var
 2. Pastikan **Allow new users to sign up** dimatikan pada Auth settings. Dashboard ini tidak memiliki public registration.
 3. Atur Site URL dan allowed redirect URLs:
    - Local: `http://localhost:3000/auth/confirm`
-   - Preview: `https://<preview-domain>/auth/confirm`
+   - Subdomain: `https://aiueo.mglwebkits.com/auth/confirm`
    - Production baru ditambahkan setelah QA disetujui.
 4. Link CLI lalu terapkan migration:
 
@@ -57,21 +57,23 @@ Salin `.env.example` ke `.env.local`. Jangan commit file `.env*` atau secret key
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Browser + server | Publishable client key; access tetap dibatasi RLS |
 | `SUPABASE_SECRET_KEY` | Server only | Invite user dan Auth admin operations |
 | `NEXT_PUBLIC_SITE_URL` | Public | Canonical URL dan redirect email |
+| `NEXT_PUBLIC_CALENDAR_APPOINTMENT_URL` | Public | URL jadwal konsultasi resmi; kosong = tombol disembunyikan |
 | `ADMIN_DEMO_MODE` | Server only | Mengaktifkan sandbox saat Supabase tidak tersedia |
 | `ADMIN_DEMO_SESSION_SECRET` | Server only | Menandatangani cookie sandbox; minimal 32 karakter |
 
 `SUPABASE_SECRET_KEY` tidak pernah memakai prefix `NEXT_PUBLIC_`. Jangan menggunakan atau membundel legacy service-role key di browser.
 
-## Vercel preview
+## Domainesia / cPanel
 
-Tambahkan variable di atas untuk environment **Preview**. Gunakan domain preview yang diberikan Vercel untuk `NEXT_PUBLIC_SITE_URL`, lalu tambahkan URL callback tersebut ke Supabase Auth. Deployment yang aman:
+Build root aplikasi standalone:
 
 ```bash
-git push -u origin codex/admin-cms-bilingual
-vercel deploy
+npm run package:domainesia
 ```
 
-Jangan gunakan `vercel --prod` dan jangan merge ke `main` sebelum checklist QA selesai.
+Hasil berada di `dist/domainesia-root`. Buat subdomain `aiueo.mglwebkits.com` dan Node.js App terpisah (Production, startup `server.js`), lalu upload isi folder tersebut ke Application root `mglwebkits.com/demos/aiueo`, sejajar dengan root demo Swift yang sudah ada. Jangan menimpa `public_html`, `mglwebkits.com/public`, atau root situs haloglory.com. Isi environment variable lewat cPanel, aktifkan AutoSSL, lalu restart app. Instruksi paket lengkap berada di `deployment/domainesia/README.txt`.
+
+Paket hosting harus menyediakan Node.js App. Menurut dokumentasi resmi Domainesia saat audit, fitur ini tersedia mulai paket Nimbus Go/Plus; verifikasi paket aktif di cPanel sebelum upload.
 
 ## Auth email
 

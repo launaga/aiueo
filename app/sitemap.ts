@@ -3,7 +3,7 @@ import { getPublished } from '@/lib/data';
 import { localized } from '@/lib/types';
 
 export default async function sitemap():Promise<MetadataRoute.Sitemap>{
-  const origin=process.env.NEXT_PUBLIC_SITE_URL||'https://aiueo-eta.vercel.app'; const sections=['about','services','events','news','gallery','contact'];
+  const origin=process.env.NEXT_PUBLIC_SITE_URL||'https://aiueo.mglwebkits.com'; const sections=['about','services','packages','events','news','gallery','contact','privacy','terms'];
   const rows=await Promise.all([getPublished('services'),getPublished('events'),getPublished('articles'),getPublished('gallery_items')]);
   const resourceNames=['services','events','news','gallery'];
   const entries:MetadataRoute.Sitemap=[];

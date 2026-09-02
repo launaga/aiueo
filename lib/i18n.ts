@@ -6,13 +6,13 @@ export const isLocale = (value: string): value is Locale => locales.includes(val
 
 const dictionaries = {
   id: {
-    home: 'Beranda', about: 'Tentang', services: 'Layanan', resources: 'Referensi', news: 'Berita', gallery: 'Galeri', events: 'Agenda', contact: 'Kontak',
+    home: 'Beranda', about: 'Tentang', services: 'Layanan', packages: 'Paket', resources: 'Referensi', news: 'Berita', gallery: 'Galeri', events: 'Agenda', contact: 'Kontak', privacy: 'Privasi', terms: 'Ketentuan',
     menu: 'Menu', skip: 'Lewati ke konten', language: 'Bahasa', backTop: 'Kembali ke atas', readMore: 'Baca selengkapnya', explore: 'Jelajahi layanan ini',
     contactTitle: 'Punya alasan untuk berkumpul?', contactCopy: 'Ceritakan tujuan, jumlah peserta, waktu, dan lokasi yang sedang dipertimbangkan. Kami akan membantu menyusun langkah berikutnya.',
     contactCta: 'Mulai brief singkat', whatsapp: 'Chat lewat WhatsApp', empty: 'Belum ada konten yang diterbitkan.', required: 'Wajib diisi', submit: 'Kirim brief', success: 'Terima kasih. Tim kami akan segera menghubungi Anda.', error: 'Terjadi kendala. Silakan coba lagi.',
   },
   en: {
-    home: 'Home', about: 'About', services: 'Services', resources: 'Resources', news: 'News', gallery: 'Gallery', events: 'Events', contact: 'Contact',
+    home: 'Home', about: 'About', services: 'Services', packages: 'Packages', resources: 'Resources', news: 'News', gallery: 'Gallery', events: 'Events', contact: 'Contact', privacy: 'Privacy', terms: 'Terms',
     menu: 'Menu', skip: 'Skip to content', language: 'Language', backTop: 'Back to top', readMore: 'Read more', explore: 'Explore this service',
     contactTitle: 'Got a reason to gather?', contactCopy: 'Tell us the goal, guest count, timing, and place you have in mind. We’ll help shape the next step.',
     contactCta: 'Start a short brief', whatsapp: 'Continue on WhatsApp', empty: 'No published content yet.', required: 'Required', submit: 'Send brief', success: 'Thank you. Our team will be in touch shortly.', error: 'Something went wrong. Please try again.',

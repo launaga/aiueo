@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('all rendered public internal links resolve', async ({ page, request, baseURL }) => {
-  const entryRoutes = ['/id','/id/about','/id/services','/id/events','/id/news','/id/gallery','/id/contact','/en','/en/about','/en/services','/en/events','/en/news','/en/gallery','/en/contact'];
+  const entryRoutes = ['/id','/id/about','/id/services','/id/packages','/id/events','/id/news','/id/gallery','/id/contact','/id/privacy','/id/terms','/en','/en/about','/en/services','/en/packages','/en/events','/en/news','/en/gallery','/en/contact','/en/privacy','/en/terms'];
   const internal = new Set<string>();
   for (const route of entryRoutes) {
     await page.goto(route);

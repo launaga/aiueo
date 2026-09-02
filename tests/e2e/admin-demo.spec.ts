@@ -28,6 +28,9 @@ test.describe('isolated admin demo', () => {
     await expect(page.getByRole('button', { name: 'Kirim undangan' })).toBeDisabled();
     await page.goto('/admin/content/events');
     await expect(page.getByRole('button', { name: /Konten baru/ })).toBeEnabled();
+    await page.goto('/admin/costing');
+    await expect(page.getByRole('heading', { name: 'Quote & Costing' })).toBeVisible();
+    await expect(page.getByText('Harga jual / pax')).toBeVisible();
   });
 
   test('keeps every admin surface usable at the narrowest supported viewport', async ({ page }) => {
@@ -35,7 +38,7 @@ test.describe('isolated admin demo', () => {
     await page.goto('/admin/login');
     await expect(page.getByRole('button', { name: /Masuk sebagai Super Admin/ })).toBeVisible();
     await page.getByRole('button', { name: /Masuk sebagai Super Admin/ }).click();
-    const routes = ['/admin','/admin/account','/admin/content/events','/admin/media','/admin/leads','/admin/users','/admin/preview/events/seed-event-1'];
+    const routes = ['/admin','/admin/account','/admin/costing','/admin/content/events','/admin/media','/admin/leads','/admin/users','/admin/preview/events/seed-event-1'];
     for (const route of routes) {
       await page.goto(route);
       const dimensions = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));

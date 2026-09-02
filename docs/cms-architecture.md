@@ -6,7 +6,7 @@
 - Server Actions untuk login, CRUD, leads, user management, password, dan media.
 - Supabase Auth memakai cookie SSR; session di-refresh pada `proxy.ts` dan divalidasi lagi dengan `getUser()` di server.
 - PostgreSQL adalah source of truth. Supabase Storage bucket `media` menyimpan image/video.
-- Vercel tetap menjadi runtime deployment.
+- Runtime deployment berupa Next.js standalone di Node.js App/Passenger Domainesia. Supabase tetap menangani CMS/Auth/Storage.
 
 ## Tables
 

@@ -1,2 +1,2 @@
 import type { MetadataRoute } from 'next';
-export default function robots():MetadataRoute.Robots{const origin=process.env.NEXT_PUBLIC_SITE_URL||'https://aiueo-eta.vercel.app';return{rules:{userAgent:'*',allow:'/',disallow:['/admin/','/auth/']},sitemap:`${origin}/sitemap.xml`,host:origin};}
+export default function robots():MetadataRoute.Robots{const origin=process.env.NEXT_PUBLIC_SITE_URL||'https://aiueo.mglwebkits.com';return{rules:{userAgent:'*',allow:'/',disallow:['/admin/','/auth/']},sitemap:`${origin}/sitemap.xml`,host:origin};}

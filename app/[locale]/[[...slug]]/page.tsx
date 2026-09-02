@@ -38,7 +38,7 @@ export async function generateMetadata({params}:Props):Promise<Metadata>{
 export default async function Page({params}:Props){
   const result=await resolve(params); const {locale,section}=result;
   if('detail' in result&&result.detail&&result.slug[1]!==localized(result.detail,'slug',locale)) redirect(`/${locale}/${section}/${localized(result.detail,'slug',locale)}`);
-  const site=process.env.NEXT_PUBLIC_SITE_URL||'https://aiueo-eta.vercel.app';
+  const site=process.env.NEXT_PUBLIC_SITE_URL||'https://aiueo.mglwebkits.com';
   const schema={'@context':'https://schema.org','@type':section==='services'?'Service':'WebPage',name:'detail' in result&&result.detail?localized(result.detail,'title',locale):copy(pageCopy[section],'title',locale),inLanguage:locale==='id'?'id-ID':'en-US',isPartOf:{'@type':'WebSite',name:'AIUEO',url:site}};
   return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/>{section==='home'?<HomePage locale={locale} services={result.items??[]} articles={'articles'in result?(result.articles??[]):[]} pageRecord={'pageRecord'in result?result.pageRecord:undefined}/>:<PublicPage locale={locale} section={section} items={result.items??[]} detail={'detail'in result?result.detail:undefined} pageRecord={'pageRecord'in result?result.pageRecord:undefined}/>}</>;
 }
