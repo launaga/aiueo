@@ -1,0 +1,4 @@
+import { updatePasswordAction } from '@/app/actions/auth';
+import { requireAdmin } from '@/lib/auth';
+
+export default async function AccountPage({searchParams}:{searchParams:Promise<{error?:string;message?:string}>}){const [user,query]=await Promise.all([requireAdmin(),searchParams]);return <main className="admin-content"><div className="admin-heading compact"><div><p className="eyebrow">Security</p><h1>Akun saya</h1></div></div><section className="panel account-panel"><h2>{user.name}</h2><p>{user.email} · {user.role.replace('_',' ')}</p><form action={updatePasswordAction}><label>Password baru<input type="password" name="password" required minLength={10} autoComplete="new-password"/></label><button className="primary-action">Perbarui password</button></form>{query.error&&<p className="alert error">{query.error}</p>}{query.message&&<p className="alert">{query.message}</p>}</section></main>}
