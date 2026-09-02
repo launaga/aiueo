@@ -1,4 +1,6 @@
-# AIUEO product architecture decision
+# AIUEO product architecture decision (legacy static reference)
+
+> Arsitektur aktif setelah migrasi ada di [cms-architecture.md](cms-architecture.md). Dokumen ini dipertahankan sebagai catatan keputusan versi statis sebelumnya.
 
 ## Decision now
 
@@ -41,4 +43,3 @@ Start with privacy-respecting, event-level measurement: CTA viewed/clicked, form
 - Runtime metadata/localization is acceptable for this prototype phase but not the final SEO architecture; build-time HTML is the target.
 - External scheduling/CRM reduces custom-code risk but creates vendor dependency; configuration and export ownership must remain with AIUEO.
 - A separate future portal avoids coupling sensitive data and authentication to the marketing site, at the cost of two deployments later. That cost is justified only after the PRD gates are met.
-
