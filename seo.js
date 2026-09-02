@@ -3,21 +3,21 @@
   const siteUrl = (config.siteUrl || 'https://aiu-eo.com').replace(/\/$/, '');
   const path = location.pathname.split('/').pop() || 'index.html';
   const pages = {
-    'index.html': ['AIUEO , Corporate Event Organizer Jakarta', 'Partner event organizer untuk kick off, gathering, outing, team building, dan acara perusahaan yang terasa hangat, terarah, dan berkesan.'],
-    'about.html': ['Tentang AIUEO , Partner untuk Momen Perusahaan', 'Kenali cara AIUEO merancang dan menjalankan acara perusahaan dari obrolan awal hingga evaluasi.'],
-    'services.html': ['Layanan Event Organizer Perusahaan , AIUEO', 'Jelajahi layanan corporate event, kick off, gathering, outing, team building, anniversary, dan event management AIUEO.'],
+    'index.html': ['AIUEO, Corporate Event Organizer Jakarta', 'Partner event organizer untuk kick off, gathering, outing, team building, dan acara perusahaan yang terasa hangat, terarah, dan berkesan.'],
+    'about.html': ['Tentang AIUEO, Partner untuk Momen Perusahaan', 'Kenali cara AIUEO merancang dan menjalankan acara perusahaan dari obrolan awal hingga evaluasi.'],
+    'services.html': ['Layanan Event Organizer Perusahaan, AIUEO', 'Jelajahi layanan corporate event, kick off, gathering, outing, team building, anniversary, dan event management AIUEO.'],
     'events.html': ['Agenda & Program AIUEO', 'Temukan agenda publik dan program AIUEO yang telah dikonfirmasi.'],
-    'gallery.html': ['Galeri Event AIUEO , Momen di Lapangan', 'Lihat suasana gathering, team building, dan proses produksi event AIUEO.'],
-    'news.html': ['Catatan Lapangan AIUEO , Ide Event Perusahaan', 'Wawasan praktis tentang partisipasi, produksi, budaya, dan desain acara perusahaan.'],
-    'contact.html': ['Konsultasi Event Perusahaan , Hubungi AIUEO', 'Ceritakan tujuan, jumlah peserta, waktu, dan kebutuhan acara Anda. Lanjutkan konsultasi bersama AIUEO melalui WhatsApp atau jadwal konsultasi.'],
-    'corporate-event.html': ['Corporate Event Organizer , AIUEO', 'Strategi kreatif, produksi, dan pengelolaan corporate event yang menjaga pesan tetap terasa manusiawi.'],
-    'annual-kick-off.html': ['Annual Kick Off Perusahaan , AIUEO', 'Rancang annual kick off yang menyatukan arah, energi, dan partisipasi tim.'],
-    'employee-gathering.html': ['Employee Gathering Perusahaan , AIUEO', 'Employee gathering yang memberi ruang bagi tim untuk terhubung, merayakan, dan pulang membawa cerita.'],
-    'family-gathering.html': ['Family Gathering Perusahaan , AIUEO', 'Family gathering yang ramah berbagai usia dengan alur, aktivitas, dan kenyamanan yang terencana.'],
-    'outing-outbound.html': ['Corporate Outing & Outbound , AIUEO', 'Outing dan outbound perusahaan dengan itinerary, transportasi, aktivitas, makan, keselamatan, dan ritme perjalanan yang terencana.'],
-    'team-building.html': ['Team Building Perusahaan , AIUEO', 'Program team building yang dirancang dari dinamika dan tujuan nyata tim Anda.'],
-    'company-anniversary.html': ['Company Anniversary Event , AIUEO', 'Rayakan perjalanan perusahaan dan babak berikutnya melalui pengalaman anniversary yang terarah.'],
-    'custom-event-management.html': ['Custom Event Management , AIUEO', 'Manajemen event khusus dari konsep, vendor, produksi, logistik, hingga evaluasi.']
+    'gallery.html': ['Galeri Event AIUEO, Momen di Lapangan', 'Lihat suasana gathering, team building, dan proses produksi event AIUEO.'],
+    'news.html': ['Catatan Lapangan AIUEO, Ide Event Perusahaan', 'Wawasan praktis tentang partisipasi, produksi, budaya, dan desain acara perusahaan.'],
+    'contact.html': ['Konsultasi Event Perusahaan, Hubungi AIUEO', 'Ceritakan tujuan, jumlah peserta, waktu, dan kebutuhan acara Anda. Lanjutkan konsultasi bersama AIUEO melalui WhatsApp atau jadwal konsultasi.'],
+    'corporate-event.html': ['Corporate Event Organizer, AIUEO', 'Strategi kreatif, produksi, dan pengelolaan corporate event yang menjaga pesan tetap terasa manusiawi.'],
+    'annual-kick-off.html': ['Annual Kick Off Perusahaan, AIUEO', 'Rancang annual kick off yang menyatukan arah, energi, dan partisipasi tim.'],
+    'employee-gathering.html': ['Employee Gathering Perusahaan, AIUEO', 'Employee gathering yang memberi ruang bagi tim untuk terhubung, merayakan, dan pulang membawa cerita.'],
+    'family-gathering.html': ['Family Gathering Perusahaan, AIUEO', 'Family gathering yang ramah berbagai usia dengan alur, aktivitas, dan kenyamanan yang terencana.'],
+    'outing-outbound.html': ['Corporate Outing & Outbound, AIUEO', 'Outing dan outbound perusahaan dengan itinerary, transportasi, aktivitas, makan, keselamatan, dan ritme perjalanan yang terencana.'],
+    'team-building.html': ['Team Building Perusahaan, AIUEO', 'Program team building yang dirancang dari dinamika dan tujuan nyata tim Anda.'],
+    'company-anniversary.html': ['Company Anniversary Event, AIUEO', 'Rayakan perjalanan perusahaan dan babak berikutnya melalui pengalaman anniversary yang terarah.'],
+    'custom-event-management.html': ['Custom Event Management, AIUEO', 'Manajemen event khusus dari konsep, vendor, produksi, logistik, hingga evaluasi.']
   };
   const [title, description] = pages[path] || pages['index.html'];
   const canonicalPath = path === 'index.html' ? '/' : `/${path}`;
