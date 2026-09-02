@@ -3,10 +3,12 @@ import { redirect } from 'next/navigation';
 import { hasSupabaseConfig } from '@/lib/supabase/config';
 import { createClient } from '@/lib/supabase/server';
 import type { UserRole } from '@/lib/types';
+import { getDemoIdentity, isDemoMode } from '@/lib/demo-auth';
 
 export type AdminIdentity = { id: string; email: string; name: string; role: UserRole; active: boolean };
 
 export const getAdminIdentity = cache(async (): Promise<AdminIdentity | null> => {
+  if (isDemoMode()) return getDemoIdentity();
   if (!hasSupabaseConfig) return null;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();

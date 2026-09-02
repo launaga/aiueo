@@ -14,6 +14,7 @@ export async function getPublished(resource: ContentResource): Promise<ContentRe
 }
 
 export async function getAdminRows(resource: ContentResource): Promise<ContentRecord[]> {
+  if (!hasSupabaseConfig) return seeds[resource] ?? [];
   const supabase = await createClient();
   const { data, error } = await supabase.from(resource).select('*').order('updated_at',{ascending:false}).limit(200);
   if (error) throw error;

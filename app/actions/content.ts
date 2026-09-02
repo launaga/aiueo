@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { assertRole } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import type { ContentResource } from '@/lib/types';
+import { isDemoMode } from '@/lib/demo-auth';
 
 const allowedResources = ['pages','services','events','articles','gallery_items'] as const;
 const contentSchema = z.object({
@@ -20,6 +21,7 @@ export async function saveContent(_: ActionResult, formData: FormData): Promise<
   try {
     const actor = await assertRole(['super_admin','editor']);
     const parsed = contentSchema.parse(Object.fromEntries(formData));
+    if (isDemoMode()) return { ok:true, message:'Simulasi berhasil. Sandbox demo tidak menyimpan perubahan.' };
     const { resource, id, ...record } = parsed;
     const supabase = await createClient();
     const payload: Record<string, unknown> = { ...record, featured_image_url: record.featured_image_url || null, published_at: record.status === 'published' ? new Date().toISOString() : null, updated_by: actor.id };
@@ -35,6 +37,7 @@ export async function saveContent(_: ActionResult, formData: FormData): Promise<
 export async function deleteContent(resource: ContentResource, id: string) {
   await assertRole(['super_admin']);
   if (!allowedResources.includes(resource)) throw new Error('Resource tidak valid.');
+  if (isDemoMode()) return;
   const supabase = await createClient();
   const { error } = await supabase.from(resource).delete().eq('id',id);
   if (error) throw error;

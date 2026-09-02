@@ -5,11 +5,13 @@ import { z } from 'zod';
 import { assertRole } from '@/lib/auth';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
+import { isDemoMode } from '@/lib/demo-auth';
 
 const roleSchema = z.enum(['super_admin','editor','viewer']);
 
 export async function inviteUser(formData: FormData) {
   const actor = await assertRole(['super_admin']);
+  if (isDemoMode()) return;
   const email = z.string().email().parse(String(formData.get('email') ?? '').toLowerCase());
   const role = roleSchema.parse(formData.get('role'));
   const origin = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
@@ -23,6 +25,7 @@ export async function inviteUser(formData: FormData) {
 
 export async function updateUser(formData: FormData) {
   const actor = await assertRole(['super_admin']);
+  if (isDemoMode()) return;
   const userId = z.string().uuid().parse(formData.get('user_id'));
   const role = roleSchema.parse(formData.get('role'));
   const isActive = formData.get('is_active') === 'true';
@@ -38,6 +41,7 @@ export async function updateUser(formData: FormData) {
 
 export async function sendPasswordReset(formData: FormData) {
   await assertRole(['super_admin']);
+  if (isDemoMode()) return;
   const email = z.string().email().parse(formData.get('email'));
   const admin = createAdminClient();
   const origin = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
